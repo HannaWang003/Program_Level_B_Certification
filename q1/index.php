@@ -42,9 +42,10 @@ include_once "db.php";
                 ?>
                 <tr>
                     <td><img src="./img/<?= $row['img']; ?>" alt="" style="width:300px;height:30px"></td>
-                    <td><input type="text" name="text[]" id="" value="<?= $row['text']; ?>" style="width:90%"></td>
+                    <td><input type="text" name="text[<?= $row['id'] ?>]" id="" value="<?= $row['text']; ?>"
+                            style="width:90%"></td>
                     <td><input type="radio" name="sh" id="" value="<?= $row['id'] ?>"></td>
-                    <td><input type="checkbox" name="del[]" id="" value="<?= $row['id'] ?>"></td>
+                    <td><input type="checkbox" name="del[<?= $row['id'] ?>]" id=""></td>
                     <td><input class="btn btn-info" type="button" value="更新圖片"></td>
                 </tr>
                 <?php
