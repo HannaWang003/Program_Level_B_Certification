@@ -1,3 +1,7 @@
+<?php
+include_once "db.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +27,7 @@
     </header>
     <main class="container">
         <h3 class="text-center">網站標題管理</h3>
-        <form action="" method="post">
+        <form action="edit_title.php" method="post">
             <table class="table table-bordered text-center">
                 <tr>
                     <td>網站標題</td>
@@ -32,13 +36,20 @@
                     <td>刪除</td>
                     <td></td>
                 </tr>
+                <?php
+                $rows = $Title->all();
+                foreach ($rows as $row) {
+                ?>
                 <tr>
-                    <td><img src="" alt="" style="width:300px;height:30px"></td>
-                    <td><input type="text" name="" id="" style="width:90%"></td>
-                    <td><input type="radio" name="" id=""></td>
-                    <td><input type="checkbox" name="" id=""></td>
+                    <td><img src="./img/<?= $row['img']; ?>" alt="" style="width:300px;height:30px"></td>
+                    <td><input type="text" name="text[]" id="" value="<?= $row['text']; ?>" style="width:90%"></td>
+                    <td><input type="radio" name="sh" id="" value="<?= $row['id'] ?>"></td>
+                    <td><input type="checkbox" name="del[]" id="" value="<?= $row['id'] ?>"></td>
                     <td><input class="btn btn-info" type="button" value="更新圖片"></td>
                 </tr>
+                <?php
+                }
+                ?>
             </table>
             <div class="d-flex justify-content-between">
                 <div><input class="btn btn-secondary" type="button" onclick="op('#cover','#cvr','title.php')"
@@ -48,6 +59,7 @@
                         type="reset" value="重置"></div>
                 <div></div>
             </div>
+            <input type="hidden" name="id" value=<?= $row['id'] ?>>
         </form>
     </main>
     <script src="../js/jquery-3.4.1.min.js"></script>

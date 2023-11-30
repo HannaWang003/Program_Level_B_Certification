@@ -199,7 +199,7 @@ function dd($array)
     echo "</pre>";
 }
 
-// $Title = new DB('titles');
+$Title = new DB('titles');
 // test
 // $dept = new DB('dept');
 // $rows = $dept->count();
