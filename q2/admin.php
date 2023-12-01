@@ -51,17 +51,20 @@ include_once "db.php";
                 $ques = $Que->all(['subject_id' => 0]);
                 foreach ($ques as $idx => $que) {
                 ?>
-                    <tr>
-                        <td><?= $idx + 1; ?></td>
-                        <td><?= $que['text']; ?></td>
-                        <td>
-                            <button class="btn btn-info">顯示</button>
-                            <button class="btn btn-warning">編輯</button>
-                            <a href="./api/del.php?id=<?= $que['id'] ?>">
-                                <button class="btn btn-light text-secondary">刪除</button>
-                            </a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><?= $idx + 1; ?></td>
+                    <td><?= $que['text']; ?></td>
+                    <td>
+                        <a href="./api/show.php?id=<?= $que['id'] ?>"
+                            class="btn <?= ($que['sh'] == 1) ?'btn-info':'btn-secondary'?>">
+                            <?= ($que['sh'] == 1) ? '顯示' : '隱藏'; ?>
+                        </a>
+                        <button class="btn btn-warning">編輯</button>
+                        <a href="./api/del.php?id=<?= $que['id'] ?>">
+                            <button class="btn btn-light text-secondary">刪除</button>
+                        </a>
+                    </td>
+                </tr>
 
                 <?php
                 }
@@ -78,11 +81,11 @@ include_once "db.php";
 </html>
 
 <script>
-    function more() {
-        let opt = `<div class="p-2">
+function more() {
+    let opt = `<div class="p-2">
                         <label for="">選項</label>
                         <input type="text" name="opt[]">
                     </div>`
-        $("#option").before(opt)
-    }
+    $("#option").before(opt)
+}
 </script>
