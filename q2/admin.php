@@ -24,10 +24,10 @@
                     </div>
                 </div>
                 <div class="bg-secondary bg-opacity-10">
-                    <div class="p-2">
+                    <div class="p-2" id="option">
                         <label for="">選項</label>
                         <input type="text" name="opt[]">
-                        <input type="button" value="更多">
+                        <input type="button" value="更多" onclick="more()">
                     </div>
                 </div>
                 <div>
@@ -43,3 +43,13 @@
 </body>
 
 </html>
+
+<script>
+    function more() {
+        let opt = `<div class="p-2">
+                        <label for="">選項</label>
+                        <input type="text" name="opt[]">
+                    </div>`
+        $("#option").before(opt)
+    }
+</script>
