@@ -23,7 +23,11 @@ include_once "db.php";
     </div>
     <!-- modal_end -->
     <header class="container">
-        <img src="" alt="">
+        <?php
+        $img = $Title->find(['sh' => 1]);
+        // dd($img);
+        ?>
+        <img src="./img/<?= $img['img'] ?>" alt="">
     </header>
     <main class="container">
         <h3 class="text-center">網站標題管理</h3>
@@ -45,7 +49,7 @@ include_once "db.php";
                         <td><input type="text" name="text[<?= $row['id'] ?>]" id="" value="<?= $row['text']; ?>" style="width:90%"></td>
                         <td><input type="radio" name="sh" id="" value="<?= $row['id'] ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>></td>
                         <td><input type="checkbox" name="del[<?= $row['id'] ?>]" id=""></td>
-                        <td><input class="btn btn-info" type="button" value="更新圖片"></td>
+                        <td><input class="btn btn-info" type="button" onclick="op('#cover','#cvr','upload_title.php?id=<?= $row['id'] ?>')" value="更新圖片"></td>
                     </tr>
                 <?php
                 }

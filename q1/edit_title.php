@@ -9,5 +9,7 @@ foreach ($_POST['text'] as $key => $id) {
         $row = $Title->find($key);
         $row['text'] = $_POST['text'][$key];
         $row['sh'] = ($key == $_POST['sh']) ? 1 : 0;
+        $Title->save($row);
     }
 }
+header("location:index.php");
