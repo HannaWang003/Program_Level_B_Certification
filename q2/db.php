@@ -85,39 +85,6 @@ class DB
         $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
-    // 以下合併到save_START
-    // protected function update($cols)
-    // {
-    //     $sql = "update `$this->table` set ";
-
-    //     if (!empty($cols)) {
-    //         foreach ($cols as $col => $value) {
-    //             $tmp[] = "`$col`='$value'";
-    //         }
-    //     } else {
-    //         echo "錯誤:缺少要編輯的欄位陣列";
-    //     }
-
-    //     $sql .= join(",", $tmp);
-    //     $sql .= " where `id`='{$cols['id']}'";
-    //     // echo $sql;
-    //     return $this->pdo->exec($sql);
-    // }
-
-    // protected function insert($values)
-    // {
-    //     $sql = "insert into `$this->table` ";
-    //     $cols = "(`" . join("`,`", array_keys($values)) . "`)";
-    //     $vals = "('" . join("','", $values) . "')";
-
-    //     $sql = $sql . $cols . " values " . $vals;
-
-    //     //echo $sql;
-
-    //     return $this->pdo->exec($sql);
-    // }
-    // 以上合併到save_END
-    // 合併insert & update
     function save($array)
     {
         if (isset($array['id'])) {
