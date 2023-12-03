@@ -1,9 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
 session_start();
-$Que = new DB('que');
-$sAll = $Que->del('3');
-dd($sAll);
+
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz";
@@ -134,3 +132,6 @@ function dd($array)
     echo "</pre>";
 }
 
+$Que = new DB('que');
+// $sAll = $Que->del('3');
+// dd($sAll);
